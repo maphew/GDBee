@@ -77,7 +77,9 @@ Traceback (most recent call last):
 FileNotFoundError: [Errno 2] No such file or directory: 'completer_data\\keywords.txt'
 ```
 
-Should be an easy fix, because if we change to `./src` first it Just Works(tm).
+Should be an easy fix, because if we change to `./src` first it Just Works(tm). (...) Yup! fixed in [a797b5e][2] 
+
 
 
   [1]: https://conda.io/en/latest/miniconda.html
+  [2]: https://github.com/maphew/GDBee/commit/a797b5e339e9d9d8628f03f0b88bb5b13f34d1eb
