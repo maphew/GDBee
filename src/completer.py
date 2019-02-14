@@ -5,6 +5,11 @@ import io
 from PyQt5.QtWidgets import QCompleter
 from PyQt5.QtCore import Qt
 
+import os
+home = os.path.dirname(os.path.realpath(__file__))
+KEYWORDS=os.path.join(home, r'completer_data\keywords.txt')
+FUNCTIONS=os.path.join(home, r'completer_data\functions.txt')
+
 
 ########################################################################
 class Completer(object):
@@ -14,13 +19,13 @@ class Completer(object):
     def __init__(self):
         """Initialize Completer class with the keywords and functions."""
         with io.open(
-                r'completer_data\keywords.txt', 'r', encoding='utf-8') as f:
+                KEYWORDS, 'r', encoding='utf-8') as f:
             lowercase_keywords = [k.rstrip().lower() for k in f.readlines()]
             uppercase_keywords = [k.upper() for k in lowercase_keywords]
             titlecase_keywords = [k.title() for k in lowercase_keywords]
 
         with io.open(
-                r'completer_data\functions.txt', 'r', encoding='utf-8') as f:
+                FUNCTIONS, 'r', encoding='utf-8') as f:
             titlecase_funcs = [f.rstrip() for f in f.readlines()]
             uppercase_funcs = [f.upper() for f in titlecase_funcs]
             lowercase_funcs = [f.lower() for f in titlecase_funcs]

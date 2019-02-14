@@ -50,6 +50,10 @@ import io
 from PyQt5.QtCore import Qt, QRegExp
 from PyQt5.QtGui import (QTextCharFormat, QColor, QFont, QSyntaxHighlighter)
 
+import os
+home = os.path.dirname(os.path.realpath(__file__))
+KEYWORDS=os.path.join(home, r'completer_data\keywords.txt')
+
 
 ########################################################################
 class Highlighter(QSyntaxHighlighter):
@@ -77,7 +81,7 @@ class Highlighter(QSyntaxHighlighter):
         keyword_format.setFontWeight(QFont.Bold)
 
         with io.open(
-                r'completer_data\keywords.txt', 'r', encoding='utf-8') as f:
+                KEYWORDS, 'r', encoding='utf-8') as f:
             self.plain_keywords = [k.rstrip() for k in f.readlines()]
 
         keyword_patterns = [
